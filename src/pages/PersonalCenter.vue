@@ -43,7 +43,9 @@ export default {
           console.log(title);
        } ,
        loginPage(){
-           this.$router.push({
+           localStorage.removeItem('token'),
+           localStorage.removeItem('user_id')
+           this.$router.replace({
                name:'LoginPage'
            })
        }
