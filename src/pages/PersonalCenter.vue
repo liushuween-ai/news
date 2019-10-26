@@ -2,12 +2,14 @@
   <div class="case">
       <div class="headerTop">
           <div class="headPortrait">
-              <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1023155365,4000686310&fm=26&gp=0.jpg" alt="">
+              <img v-if="data.head_img" :src="data.head_img" alt="">
+              <img v-else src="@/assets/logo.png" alt="">
           </div>
           <div class="content">
               <div class="userMessage">
-                  <span class="iconfont iconxingbienan"></span>
-                  火星网友
+                  <span v-if="data.gender==1" class="iconfont iconxingbienan"></span>
+                  <span v-else class="iconfont iconxingbienv"></span>
+                  {{data.nickname}}
               </div>
               <div class="time">2019-10-10</div>
           </div>
@@ -29,7 +31,7 @@ import authList from '../components/authList'
 export default {
     data(){
         return {
-            
+            data:[]
         }
     },
     components:{
@@ -45,6 +47,19 @@ export default {
                name:'LoginPage'
            })
        }
+    },
+    mounted(){
+        // console.log(localStorage.getItem('token'));
+        this.$axios({
+            url:'http://127.0.0.1:3000/user/'+localStorage.getItem('user_id'),
+            method:'get',
+            headers:{
+                Authorization:localStorage.getItem('token')
+            }
+        }).then(res=>{
+            console.log(res.data.data);
+            this.data=res.data.data
+        })
     }
 }
 </script>
