@@ -13,7 +13,10 @@
           <authInput type='password' placeholder='请输入密码' rule='^\d{3,16}$' err_message="请输入正确的密码"  @input="setPassword"></authInput>
       </div>
       <div class="loginBtn">
-          <authBtn text="登录" send="sendLogin"></authBtn>
+          <authBtn text="登录" @send="sendLogin"></authBtn>
+      </div>
+      <div class="register">
+          还没有账号? <router-link to="/register">立即注册</router-link>
       </div>
   </div>
 </template>
@@ -41,6 +44,22 @@ export default {
         },
         sendLogin(){
             // 发送ajks请求
+            this.$axios({
+                url: "http://127.0.0.1:3000/login",
+                method:'post',
+                data:{
+                    username:this.UserName,
+                    password:this.password
+                }
+                
+            }).then(res=>{
+                // console.log(res.data.statusCode);
+                if(res.data.statusCode==401){
+                    this.$toast.fail(res.data.message)
+                }else{
+                    this.$toast.success(res.data.message)
+                }
+            })
         }
     }
 }
@@ -70,6 +89,10 @@ export default {
             }
         }
         .loginBtn{
+            margin-top: 6.667vw;            
+        }
+        .register{
+            text-align: center;
             margin-top: 6.667vw;
         }
     }
