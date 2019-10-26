@@ -53,10 +53,20 @@ export default {
                 }
                 
             }).then(res=>{
-                // console.log(res.data.statusCode);
+                // console.log(res);
+               
+                // 判断弹出提示框
                 if(!res.data.statusCode){
+                    localStorage.setItem('token',res.data.data.token);
+                    localStorage.setItem('user_id',res.data.data.user.id);
+                    setTimeout(()=>{
+                        this.$router.push({
+                            name:'PersonalCenterPage'
+                        })
+                    },1000)
                     this.$toast.success(res.data.message)
                 }
+                
             })
         }
     }
