@@ -29,7 +29,8 @@ export default {
         showTips(){
             if(!this.isOk){
                 // 弹出提示框
-                alert(this.err_message);
+                // alert(this.err_message);
+                this.$toast.fail(this.err_message)
                 // console.log(this.err_message)
             }
         }
