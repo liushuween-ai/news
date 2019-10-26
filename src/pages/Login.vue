@@ -45,7 +45,7 @@ export default {
         sendLogin(){
             // 发送ajks请求
             this.$axios({
-                url: "http://127.0.0.1:3000/login",
+                url: "/login",
                 method:'post',
                 data:{
                     username:this.UserName,
@@ -54,9 +54,7 @@ export default {
                 
             }).then(res=>{
                 // console.log(res.data.statusCode);
-                if(res.data.statusCode==401){
-                    this.$toast.fail(res.data.message)
-                }else{
+                if(!res.data.statusCode){
                     this.$toast.success(res.data.message)
                 }
             })

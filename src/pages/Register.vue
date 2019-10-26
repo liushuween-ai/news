@@ -50,7 +50,7 @@ export default {
         },
         sendRegister(){
              this.$axios({
-                url: "http://127.0.0.1:3000/register",
+                url: "/register",
                 method:'post',
                 data:{
                     username:this.UserName,
@@ -59,10 +59,8 @@ export default {
                 }    
             }).then(res=>{
                 // console.log(res.data.statusCode);
-                if(res.data.statusCode==400){
-                    this.$toast.fail(res.data.message)
-                }else{
-                    this.$toast.success(res.data.message)
+                if(!res.data.statusCode){
+                    this.$toast.success(res.data.message)               
                 }
             })
         }
