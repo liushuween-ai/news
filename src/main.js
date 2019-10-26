@@ -7,11 +7,27 @@ import router from './router'
 // 引入axios组件
 import axios from 'axios';
 
-//引入组件库
+//引入Vant组件库
 import Vant from 'vant';
-//注册组件库
+
+// 全局的路由守卫
+// 路由：3.创建对象
+
+
+router.beforeEach((to, from, next) => {
+  const hasToken=localStorage.getItem('token');
+  if (to.path === "/personalCenter") {
+    if(hasToken){
+      return next()
+    }else{
+      return next('/login')
+    }
+  }
+  next()
+})
+//注册Vant组件库
 Vue.use(Vant);
-//引入组件样式文件
+//引入Vant组件样式文件
 import 'vant/lib/index.css';
 
 
@@ -24,10 +40,15 @@ axios.defaults.baseURL = "http://127.0.0.1:3000";
 // 拦截响应
 // 因为toast插件只能在组件里面用
 import {Toast} from 'vant'
+import VueRouter from 'vue-router';
 axios.interceptors.response.use(res=>{
   const {message,statusCode}=res.data
   if (message && statusCode == 401 ||res.data.statusCode == 400) {
     Toast.fail(message)
+  }
+  if (message === "用户信息验证失败"){
+    // 跳转到登录页
+    router.push("/login");
   }
   return(res)
 })
