@@ -1,7 +1,7 @@
 <template>
   <div class="case">
-      <div class="headerTop">
-          <div class="headPortrait">
+      <div class="headerTop" @click="editDataPage">
+          <div class="headPortrait" >
               <img v-if="data.head_img" :src="data.head_img" alt="">
               <img v-else src="@/assets/logo.png" alt="">
           </div>
@@ -20,7 +20,7 @@
       <authList title="我的关注" particulars="关注的用户" @redirect="redirect"></authList>
       <authList title="我的跟帖" particulars="跟帖/回复" @redirect="redirect"></authList>
       <authList title="我的收藏" particulars="文章/视频" @redirect="redirect"></authList>
-      <authList title="设置"  @redirect="redirect"></authList>
+      <authList title="设置"  @redirect="editDataPage"></authList>
       <authList title="退出登录"  @redirect="loginPage"></authList>
   </div>
   
@@ -42,6 +42,12 @@ export default {
         //    跳转页面带有参数
           console.log(title);
        } ,
+       editDataPage(title){
+        //    跳转到编辑资料页面
+           this.$router.push({
+               name: 'editDataPage'
+           })
+       },
        loginPage(){
            localStorage.removeItem('token'),
            localStorage.removeItem('user_id')
@@ -71,12 +77,12 @@ export default {
         .headerTop{
             display: flex;
             justify-content: space-around;
-            padding:30px 25px;
+            padding:8.333vw 6.944vw;
             align-items: center;
-            border-bottom: 5px solid #eee;
+            border-bottom: 1.389vw solid #eee;
           .headPortrait{
-              width:19.444vw;
-              height: 19.444vw;
+              width:69.998px;
+              height: 69.998px;
               border-radius: 50%;
               img{
                 width: 100%;
@@ -85,15 +91,15 @@ export default {
           } 
           .content{
               flex: 1;
-              margin-left: 5.556vw;
+              margin-left: 20.002px;
 
               .time{
-                  font-size: 14px;
+                  font-size: 3.889vw;
                   color: #777;
               }
           } 
           .right{
-              padding-right: 5.556vw;
+              padding-right: 20.002px;
           }
         }
     }
