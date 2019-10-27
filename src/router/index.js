@@ -1,17 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/pages/index.vue'
+import Home from '@/pages/Home.vue'
 import Login from '@/pages/Login.vue'
 import Register from '@/pages/Register'
 import PersonalCenter from '@/pages/PersonalCenter'
+import EditData from '@/pages/EditData'
+import MyConcern from '@/pages/MyConcern'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: Index
+      name: 'home',
+      component: Home
     },
     {
       path:'/login',
@@ -27,6 +29,15 @@ export default new Router({
       path: '/personalCenter',
       name: 'PersonalCenterPage',
       component: PersonalCenter
+    },{
+      path: '/editData',
+      name: 'editDataPage',
+      component: EditData
+    },
+    {
+      path:'/myConcern',
+      name:'myConcernPage',
+      component: MyConcern
     }
   ]
 })
