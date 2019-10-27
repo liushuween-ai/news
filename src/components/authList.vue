@@ -22,13 +22,13 @@ export default {
     .list{
         display: flex;
         justify-content: space-between;
-        height: 50px;
-        line-height: 50px;
-        margin-left: 20px;
+        height: 13.889vw;
+        line-height: 13.889vw;
+        margin-left: 5.556vw;
         border-bottom: 1px solid #eee;
         .particulars{
             color: #999;
-            font-size: 14px;
+            font-size: 3.889vw;
         }
     }
 </style>
