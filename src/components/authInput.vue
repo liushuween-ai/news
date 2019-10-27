@@ -4,6 +4,7 @@
 
 <script>
 export default {
+    // 接收父组件传过来的数据 rule 正则表达式  err_message 错误提示信息
     props:['type','placeholder','rule','err_message'],
     data(){
         return {
@@ -12,6 +13,7 @@ export default {
     },
     methods:{
         dataChange($event){
+            // $event.target获取当前发生该事件的dom元素
             if(!$event.target.value){
                 this.isOk=true
             }else{
@@ -24,6 +26,7 @@ export default {
             //     // 输入错误提示
             //     console.log(this.err_message)
             // }
+            // 向父组件返回input的事件
             this.$emit('input', $event.target.value)
         },
         showTips(){

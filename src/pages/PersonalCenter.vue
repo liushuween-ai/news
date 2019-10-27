@@ -27,6 +27,7 @@
 </template>
 
 <script>
+// 引入自己的插件
 import authList from '../components/authList'
 export default {
     data(){
@@ -49,6 +50,7 @@ export default {
            })
        },
        loginPage(){
+           //退出登录时把本地储存的token数据和user_id清除
            localStorage.removeItem('token'),
            localStorage.removeItem('user_id')
            this.$router.replace({
@@ -58,6 +60,7 @@ export default {
     },
     mounted(){
         // console.log(localStorage.getItem('token'));
+        // 向后台发送请求
         this.$axios({
             url:'http://127.0.0.1:3000/user/'+localStorage.getItem('user_id'),
             method:'get',
@@ -73,6 +76,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// scope是只能在当前页面有用，lang="less"  告诉vue使用less写的
     .case{
         .headerTop{
             display: flex;

@@ -37,7 +37,7 @@ axios.defaults.baseURL = "http://127.0.0.1:3000";
 // axios.defaults.baseURL = "http://111.230.181.206:3000";
 // axios.defaults.baseURL = "http://localhost:3000";
 
-// 拦截响应
+// 拦截响应在数据返回的时候拦截
 // 因为toast插件只能在组件里面用
 import {Toast} from 'vant'
 import VueRouter from 'vue-router';

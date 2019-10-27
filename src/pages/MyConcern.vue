@@ -1,7 +1,7 @@
 <template>
   <div>
       <headerMiddle title="我的关注"></headerMiddle>
-      <div v-for="item in userData" class="list"> 
+      <div v-for="(item,index) in userData" :key="index" class="list"> 
         {{item.head_img}}
         <img  v-if="item.head_img" :src=" item.head_img"  alt="">
         <img v-else src="@/assets/logo.png" alt="">

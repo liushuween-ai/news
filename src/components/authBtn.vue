@@ -7,6 +7,7 @@ export default {
     props:['text'],
     methods:{
         send(){
+            // 向父组件传送一个事件监听按钮被点击事件
             this.$emit('send')
         }
     }
