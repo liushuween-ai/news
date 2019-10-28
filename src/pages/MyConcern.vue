@@ -2,14 +2,13 @@
   <div>
       <headerMiddle title="我的关注"></headerMiddle>
       <div v-for="(item,index) in userData" :key="index" class="list"> 
-        {{item.head_img}}
-        <img  v-if="item.head_img" :src=" item.head_img"  alt="">
-        <img v-else src="@/assets/logo.png" alt="">
+        <img v-if="item.head_img" :src="$axios.defaults.baseURL+item.head_img"  alt="">
+        <img v-else src="/static/imgs/a.jpg" alt="">
         <div class="content">
           <p>{{item.nickname}}</p>
           <span class="time">2019.10.10</span>
         </div>
-        <div class="btn">取消关注</div>
+        <div class="btn" @click="cancelConcern(item.id)">取消关注</div>
       </div>
   </div>
 </template>
@@ -25,6 +24,16 @@ export default {
   components:{
     headerMiddle,
   },
+  methods:{
+    cancelConcern(id){
+      this.$axios({
+        url,
+        method:'get'
+      }).then(res=>{
+        console.log()
+      })
+    }
+  },
   mounted(){
     this.$axios({
       url:'/user_follows/',
@@ -33,8 +42,9 @@ export default {
         Authorization:localStorage.getItem('token')
       }
     }).then(res=>{
-      console.log(res.data.data);
-      this.userData=res.data.data
+      this.userData =res.data.data;
+  
+      
     })
   }
 }
