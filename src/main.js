@@ -12,11 +12,10 @@ import Vant from 'vant';
 
 // 全局的路由守卫
 // 路由：3.创建对象
-
-
 router.beforeEach((to, from, next) => {
   const hasToken=localStorage.getItem('token');
-  if (to.path === "/personalCenter") {
+  const pathArr = ['/personalCenter', '/editData', '/myConcern'];
+  if (pathArr.indexOf(to.path)>=0) {
     if(hasToken){
       return next()
     }else{
@@ -37,7 +36,14 @@ axios.defaults.baseURL = "http://127.0.0.1:3000";
 // axios.defaults.baseURL = "http://111.230.181.206:3000";
 // axios.defaults.baseURL = "http://localhost:3000";
 
-// 拦截响应在数据返回的时候拦截
+// axios拦截器 请求拦截器
+axios.interceptors.request.use((config)=>{
+  if (!config.headers.Authorization&&localStorage.getItem('token')){
+    config.headers.Authorization = localStorage.getItem('token');
+  }
+  return config;
+})
+// axios拦截响应在数据返回的时候拦截 响应拦截器
 // 因为toast插件只能在组件里面用
 import {Toast} from 'vant'
 import VueRouter from 'vue-router';
