@@ -2,8 +2,8 @@
   <div class="case">
       <div class="headerTop" @click="editDataPage">
           <div class="headPortrait" >
-              <img v-if="data.head_img" :src="data.head_img" alt="">
-              <img v-else src="@/assets/logo.png" alt="">
+              <img :src="data.head_img" alt="">
+              <!-- <img v-else src="@/assets/logo.png" alt=""> -->
           </div>
           <div class="content">
               <div class="userMessage">
@@ -68,8 +68,14 @@ export default {
                 Authorization:localStorage.getItem('token')
             }
         }).then(res=>{
-            console.log(res.data.data);
-            this.data=res.data.data
+            // console.log(res.data.data);
+            this.data=res.data.data;
+            if(this.data.head_img) {
+                this.data.head_img=this.$axios.defaults.baseURL+ this.data.head_img;
+                // console.log(this.$axios.defaults.baseURL)
+            }else{
+                this.data.head_img='/static/imgs/a.jpg'
+            }
         })
     }
 }
