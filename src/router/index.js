@@ -6,6 +6,8 @@ import Register from '@/pages/Register'
 import PersonalCenter from '@/pages/PersonalCenter'
 import EditData from '@/pages/EditData'
 import MyConcern from '@/pages/MyConcern'
+import MyComments from '@/pages/MyComments'
+import MyCollections from '@/pages/MyCollections'
 Vue.use(Router)
 
 export default new Router({
@@ -38,6 +40,16 @@ export default new Router({
       path:'/myConcern',
       name:'myConcernPage',
       component: MyConcern
+    },
+    {
+      path:'/myComments',
+      name:'myCommentsPage',
+      component: MyComments
+    },
+    {
+      path:'/myCollections',
+      name:'myCollectionsPage',
+      component: MyCollections
     }
   ]
 })
