@@ -14,7 +14,7 @@ import Vant from 'vant';
 // 路由：3.创建对象
 router.beforeEach((to, from, next) => {
   const hasToken=localStorage.getItem('token');
-  const pathArr = ['/personalCenter', '/editData', '/myConcern'];
+  const pathArr = ['/personalCenter', '/editData', '/myConcern', '/myComments', '/myCollections'];
   if (pathArr.indexOf(to.path)>=0) {
     if(hasToken){
       return next()
