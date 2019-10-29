@@ -2,8 +2,7 @@
   <div>
       <headerMiddle title="我的关注"></headerMiddle>
       <div v-for="(item,index) in userData" :key="index" class="list"> 
-        <img v-if="item.head_img" :src="$axios.defaults.baseURL+item.head_img"  alt="">
-        <img v-else src="/static/imgs/a.jpg" alt="">
+        <img  :src="item.head_img"  alt="">
         <div class="content">
           <p>{{item.nickname}}</p>
           <span class="time">2019.10.10</span>
@@ -25,17 +24,8 @@ export default {
     headerMiddle,
   },
   methods:{
-    cancelConcern(id){
+    loadPage(){
       this.$axios({
-        url,
-        method:'get'
-      }).then(res=>{
-        console.log()
-      })
-    }
-  },
-  mounted(){
-    this.$axios({
       url:'/user_follows/',
       method:'get',
       headers:{
@@ -43,9 +33,29 @@ export default {
       }
     }).then(res=>{
       this.userData =res.data.data;
-  
+      // console.log( res.data.data);
+      this.userData.forEach(element=>{
+        if(element.head_img){
+          element.head_img=this.$axios.defaults.baseURL+element.head_img
+        }else{
+          element.head_img='/static/imgs/a.jpg'
+        }  
+      })
       
     })
+    },
+    cancelConcern(id){
+      this.$axios({
+        url:'/user_unfollow/'+id,
+        method:'get'
+      }).then(res=>{
+        // console.log(res);
+        this.loadPage()
+      })
+    }
+  },
+  mounted(){
+    this.loadPage()
   }
 }
 </script>
