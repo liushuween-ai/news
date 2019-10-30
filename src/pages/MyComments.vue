@@ -29,7 +29,8 @@ export default {
     data(){
         return{
             data:[],
-            pageIndex:1
+            pageIndex:1,
+            pageSize:3
         }
     },
     mounted(){
@@ -42,11 +43,16 @@ export default {
             method:'get',
             params:{
                 pageIndex,
-                pageSize:2,
+                pageSize:this.pageSize,
             }
          }).then(res=>{
             // console.log(res.data.data);
-            this.data=res.data.data;
+            const newData=[...this.data,...res.data.data]
+            // this.data=res.data.data;
+            this.data=newData;
+            if(res.data.data.length<this.pageSize){
+                this.$toast.fail('亲,没有更多跟帖了')
+            }
         })
         },
         getCommentData(){
