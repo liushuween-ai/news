@@ -61,23 +61,23 @@ export default {
             color: red;
         }
         .commentActive{
-            padding: 0 15px;
+            padding: 0 4.167vw;
             display: flex;
             justify-content: space-around;
             input{
-                width: 181px;
-                height: 31px;
+                width: 50.278vw;
+                height: 8.611vw;
                 border: none;
                 outline: none;
                 background-color: #d7d7d7;
                 color: #333;
-                border-radius: 16px;
-                padding-left: 8px;
-                font-size: 14px;
+                border-radius: 4.444vw;
+                padding-left: 2.222vw;
+                font-size: 3.889vw;
             }
             .iconfont{
-                font-size: 23px;
-                margin-left: 24px;
+                font-size: 6.389vw;
+                margin-left: 6.667vw;
             }
             .commenticon{
                 position: relative;
@@ -98,27 +98,27 @@ export default {
         .commentInactive{
            display: flex;
            width: 100%;
-           padding: 0 15px;
+           padding: 0 4.167vw;
            justify-content: space-between;
            align-items: flex-end;
            textarea{
-                width: 250px;
+                width: 69.444vw;
                 background-color: #d7d7d7;
                 border: none;
                 outline: none;
-                border-radius: 5px;
+                border-radius: 1.389vw;
                 resize: none;
                 
            }
            .sendBtn{
-               width: 59px;
-               height: 26px;
-               border-radius: 13px;
+               width: 16.389vw;
+               height: 7.222vw;
+               border-radius: 3.611vw;
                background-color: red;
                color: #fff;
-               line-height: 26px;
+               line-height: 7.222vw;
                text-align: center;
-               font-size: 12px;
+               font-size: 3.333vw;
            }
         }
     }

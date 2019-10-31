@@ -72,8 +72,8 @@ export default {
 <style lang="less" scoped>
     .news{
         padding: 0 4.167vw;
-        border-bottom: 1.389vw solid #eee;
-        margin-bottom: 80px;
+        border-bottom: 5px solid #eee;
+        margin-bottom: 22.222vw;
         .video{
             width: 100%;
         }
