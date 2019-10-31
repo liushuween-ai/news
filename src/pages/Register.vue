@@ -2,7 +2,7 @@
     
     <div class="register">
         <div class="registerIcon">
-          <span class="iconfont iconicon-test" @click=$router.back()></span>
+          <span class="iconfont iconicon-test" @click="$router.back()"></span>
       </div>
       <div class="logo">
           <span class="iconfont iconnew"></span>
