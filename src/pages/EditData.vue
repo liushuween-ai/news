@@ -46,8 +46,9 @@ export default {
     },
     methods:{
          afterRead(uploaderFile) {
+            //  uploaderFile接收上传的图片参数
             // 此时可以自行将文件上传至服务器
-            console.log(uploaderFile.file);
+            // console.log(uploaderFile.file);    
             const data =new FormData();
             data.append('file',uploaderFile.file);
             this.$axios({
