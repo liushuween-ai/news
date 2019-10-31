@@ -9,6 +9,7 @@ import MyConcern from '@/pages/MyConcern'
 import MyComments from '@/pages/MyComments'
 import MyCollections from '@/pages/MyCollections'
 import PostDetails from '@/pages/PostDetails'
+import Search from '@/pages/Search'
 Vue.use(Router)
 
 export default new Router({
@@ -56,6 +57,10 @@ export default new Router({
       path:"/postDetails/:id",
       name: 'postDetailsPage',
       component: PostDetails
+    },{
+      path:'/search',
+      name:"searchPage",
+      component:Search
     }
   ]
 })
