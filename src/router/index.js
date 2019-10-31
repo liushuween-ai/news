@@ -8,6 +8,7 @@ import EditData from '@/pages/EditData'
 import MyConcern from '@/pages/MyConcern'
 import MyComments from '@/pages/MyComments'
 import MyCollections from '@/pages/MyCollections'
+import PostDetails from '@/pages/PostDetails'
 Vue.use(Router)
 
 export default new Router({
@@ -50,6 +51,11 @@ export default new Router({
       path:'/myCollections',
       name:'myCollectionsPage',
       component: MyCollections
+    },
+    {
+      path:"/postDetails/:id",
+      name: 'postDetailsPage',
+      component: PostDetails
     }
   ]
 })
