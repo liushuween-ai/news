@@ -53,10 +53,10 @@ export default {
   .singleImgPost{
     display:flex;
     justify-content: space-between;
-    padding: 15px 10px;
+    padding: 4.167vw 2.778vw;
     border-bottom: 1px solid #eee;
     .left{
-      margin-right: 5px;
+      margin-right: 1.389vw;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -116,7 +116,7 @@ export default {
     }
   }
   .videoPost{
-    padding: 15px 10px;
+    padding: 4.167vw 2.778vw;
     border-bottom: 1px solid #eee;
     .title{
       font-size: 16px;
@@ -129,8 +129,8 @@ export default {
       width: 100%;
       position: relative;
       img{
-        width: 340px;
-        height: 170px;
+        width: 94.444vw;
+        height: 47.222vw;
         object-fit: cover;
       }
       .btnWrapper{
@@ -143,11 +143,11 @@ export default {
         justify-content: center;
         align-items: center;
         .iconfont{
-          width: 55px;
-          height: 55px;
+          width: 15.278vw;
+          height: 15.278vw;
           border-radius: 50%;
           background-color: #ccc;
-          line-height: 46px;
+          line-height: 12.778vw;
           text-align: center;
           color: #fff;
           font-size: 46px;
