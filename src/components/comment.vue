@@ -2,15 +2,17 @@
   <div>
       <div class="commentWrappe">
           <div class="meta">
-              <img class="avatar" src="/static/imgs/a.jpg" alt="">
+              <img class="avatar" v-if="commentItem.user.head_img" :src="commentItem.user.head_img" alt="">
+              <img class="avatar" v-else src="/static/imgs/a.jpg" alt="">
               <div class="info">
-                  <div class="name">火星网友</div>
+                  <div class="name">{{commentItem.user.nickname}}</div>
                   <div class="time">2小时前</div>
               </div>
-              <div class="btnReply">
+              <div class="btnReply" @click="reply">
                   回复
               </div>
           </div>
+          <commentFloor v-if="commentItem.parent" :floorItem="commentItem.parent" :parentLengh="parentLengh"></commentFloor>
           <div class="commentContent">
             {{this.commentItem.content}}
           </div>
@@ -19,8 +21,31 @@
 </template>
 
 <script>
+import commentFloor from './commentFloor.vue'
 export default {
-    props:['commentItem']
+    props:['commentItem'],
+    components:{
+       commentFloor 
+    },
+    data(){
+        return {
+            parentLengh:this.countParent(0,this.commentItem)
+        }
+    },
+    methods:{
+        reply(){
+            this.$emit('reply',{id:this.commentItem.id})
+        },
+        countParent(number,obj){
+            // 获取parent的个数传给commentFloor组件
+            if(obj.parent){
+                return this.countParent(number+1,obj.parent)
+            }else{
+                // console.log(number)
+                return number;
+            }
+        }
+    }
 }
 </script>
 
@@ -28,11 +53,13 @@ export default {
     .commentWrappe{
         padding: 4.167vw 2.778vw;
         color: #333;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #ccc;
+        box-sizing: border-box;
         .meta{
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            margin-bottom: 2.778vw;
              .avatar{
                 width: 10vw;
                 height: 10vw;
