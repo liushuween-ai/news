@@ -20,11 +20,16 @@
 
 <script>
 export default {
-    props:['post'],
+    props:['post','replyActive','commentId'],
     data(){
         return{
             isFocus:false,
             content:''
+        }
+    },
+    watch:{
+        replyActive(){
+            this.isFocus=this.replyActive
         }
     },
     methods:{
@@ -34,23 +39,39 @@ export default {
             }
         },
         send(){
-            // 发送ajax请求请求回来后清空输入框将输入框变小
-            this.content='',
-            this.isFocus=false;
+            this.$axios({
+                url:'/post_comment/'+this.post.id,
+                method:'post',
+                data:{
+                    content:this.content,
+                    parent_id:this.commentId.id ? this.commentId.id :null
+                },
+            }).then(res=>{
+                // console.log(res.data)
+                const {message}=res.data
+                // 发送ajax请求请求回来后清空输入框将输入框变小
+                this.content='',
+                this.isFocus=false;
+                 // 请求发送完毕,为了更新页面数据,需要向父组件触发一个自定义事件
+                this.$emit('newComment');
+            })
         },
         showDate(){
+            // 获取焦点像是文本域
             this.isFocus=true;
             // this.$refs.commentArea.focus();  
             this.$nextTick(()=>{
+                //文本域获取焦点 获取焦点
                 this.$refs.commentArea.focus();                                        
             })
         },
         star(){
+            // 获取收藏
           this.$axios({
               url:'/post_star/'+this.post.user.id,
               method:'get',
           }).then(res=>{
-              console.log(res);
+            //   console.log(res);
               const {message}=res.data;
               if(message==='收藏成功'){
                   this.post.has_star=true;

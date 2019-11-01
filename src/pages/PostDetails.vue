@@ -25,12 +25,15 @@
           <div class="title">
               <h2>精彩跟帖</h2>
           </div>
-          <div class="commentext" v-if="comment.length ==0">暂无跟帖,抢占沙发</div>
+          <div class="commentext" v-if="comments.length ==0">暂无跟帖,抢占沙发</div>
           <div class="commentList" v-else>
-              <comment :commentItem="item" v-for="(item,index) in comment" :key="index"></comment>
+              <comment :commentItem="item" v-for="(item,index) in comments" :key="index" @reply="reply"></comment>
+              <div class="btnMoreComments" @click="toMoreComments">
+                    更多跟帖
+              </div>
           </div>
       </div>
-      <postDetailFooter :post="posts"></postDetailFooter> 
+      <postDetailFooter :post="posts" :replyActive="replyActive" :commentId="commentId"  @newComment="getComments"></postDetailFooter> 
   </div>
 </template>
 
@@ -48,7 +51,9 @@ export default {
         return {
             posts:{},
             postsId:this.$route.params.id,
-            comment:[]
+            comments:[],
+            commentId:{},
+            replyActive: 0
         }
     },
     mounted(){
@@ -62,16 +67,26 @@ export default {
             // console.log(this.posts)
         })
         // 获取评论数据
-        this.$axios({
-            url:'/post_comment/'+this.$route.params.id,
-            method:'get',
-        }).then(res=>{
-            console.log(res.data.data);
-            this.comment=res.data.data;
-        })
+        this.getComments();
     },
     methods:{
+        toMoreComments(){
+            // 点击更多跟帖按钮跳转到更多庚帖的页面
+            this.$router.push({
+                name:'moreCommentsPage',
+                params:{
+                   id:this.$route.params.id 
+                }
+            })
+            
+        },
+        reply(commentId){
+            // 监听comment组件传递的参数
+            this.commentId=commentId;
+            this.replyActive+=1;
+        },
         like(){
+            // 获取点赞个数
             this.$axios({
                 url:'/post_like/'+this.posts.id,
                 method:'get'
@@ -85,6 +100,19 @@ export default {
                     this.posts.has_like=true;
                     this.posts.like_length+=1;
                 }
+            })
+        },
+        getComments(){
+            // 获取评论数据
+            this.$axios({
+                url:'/post_comment/'+this.$route.params.id,
+                method:'get',
+                params:{
+                    pageSize:3
+                }
+            }).then(res=>{
+                console.log(res.data.data);
+                this.comments=res.data.data;  
             })
         }
     }
@@ -146,8 +174,9 @@ export default {
     }
     .comments{
         width: 100%;
-        padding: 8.333vw 4.167vw  22.222vw;
+        padding: 8.333vw 0 22.222vw;
         // margin-bottom: 22.222vw;
+        box-sizing: border-box;
         color: #333;
         border-bottom: 1px solid #ccc;
         .title{
@@ -162,6 +191,15 @@ export default {
             height: 27.778vw;
             line-height: 27.778vw; 
             font-size: 16px;
+        }
+        .btnMoreComments{
+            width: 120px;
+            height: 30px;
+            border-radius: 15px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #333;
+            margin: 15px auto 0;
         }
     }
 </style>
