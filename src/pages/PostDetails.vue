@@ -1,7 +1,6 @@
 <template>
   <div>
       <postDetailHeader :post="posts"></postDetailHeader>
-      <postDetailFooter :post="posts"></postDetailFooter> 
       <div class="news" v-if="posts.type==2">
           <video class="video" src="https://video.pearvideo.com/mp4/adshort/20191031/cont-1617852-11947733-132928_adpkg-ad_hd.mp4" controls="controls"></video>
           <div class="title">{{posts.title}}</div>
@@ -22,30 +21,53 @@
               <div class="iconfont iconweixin"><span>微信</span></div>
           </div>
       </div>
+      <div class="comments">
+          <div class="title">
+              <h2>精彩跟帖</h2>
+          </div>
+          <div class="commentext" v-if="comment.length ==0">暂无跟帖,抢占沙发</div>
+          <div class="commentList" v-else>
+              <comment :commentItem="item" v-for="(item,index) in comment" :key="index"></comment>
+          </div>
+      </div>
+      <postDetailFooter :post="posts"></postDetailFooter> 
   </div>
 </template>
 
 <script>
 import postDetailHeader from '../components/postDetailHeader'
 import postDetailFooter from '../components/postDetailFooter'
+import comment from '../components/comment'
 export default {
     components:{
         postDetailHeader,
-        postDetailFooter
+        postDetailFooter,
+        comment
     },
     data(){
         return {
-            posts:{}
+            posts:{},
+            postsId:this.$route.params.id,
+            comment:[]
         }
     },
     mounted(){
+        // 获取文章数据
         this.$axios({
             url:'/post/'+this.$route.params.id,
             method:'get'
         }).then(res=>{
             // console.log(res);
             this.posts=res.data.data;
-            console.log(this.posts)
+            // console.log(this.posts)
+        })
+        // 获取评论数据
+        this.$axios({
+            url:'/post_comment/'+this.$route.params.id,
+            method:'get',
+        }).then(res=>{
+            console.log(res.data.data);
+            this.comment=res.data.data;
         })
     },
     methods:{
@@ -73,7 +95,7 @@ export default {
     .news{
         padding: 0 4.167vw;
         border-bottom: 5px solid #eee;
-        margin-bottom: 22.222vw;
+        
         .video{
             width: 100%;
         }
@@ -120,6 +142,26 @@ export default {
                 }
             }
             
+        }
+    }
+    .comments{
+        width: 100%;
+        padding: 8.333vw 4.167vw  22.222vw;
+        // margin-bottom: 22.222vw;
+        color: #333;
+        border-bottom: 1px solid #ccc;
+        .title{
+            h2{
+                text-align: center;
+                font-weight: normal;
+                font-size: 20px;
+            }
+        }
+        .commentext{  
+            text-align: center;
+            height: 27.778vw;
+            line-height: 27.778vw; 
+            font-size: 16px;
         }
     }
 </style>
