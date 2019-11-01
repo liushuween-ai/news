@@ -12,8 +12,8 @@
           </a>
       </div>
       <div class="commentInactive" v-show="isFocus">
-          <textarea cols="30" rows="3" @blur="isFocus=false" ref="commentArea"></textarea>
-          <div class="sendBtn">发送</div>
+          <textarea cols="30" rows="3" v-model="content" @blur="handleBlur" ref="commentArea"></textarea>
+          <div class="sendBtn" @click="send">发送</div>
       </div>
   </div>
 </template>
@@ -23,10 +23,21 @@ export default {
     props:['post'],
     data(){
         return{
-            isFocus:false
+            isFocus:false,
+            content:''
         }
     },
     methods:{
+        handleBlur(){
+            if(this.content===''){
+                this.isFocus=false
+            }
+        },
+        send(){
+            // 发送ajax请求请求回来后清空输入框将输入框变小
+            this.content='',
+            this.isFocus=false;
+        },
         showDate(){
             this.isFocus=true;
             // this.$refs.commentArea.focus();  
@@ -55,7 +66,7 @@ export default {
 <style lang="less" scoped>
     .comment{
         position: fixed;
-        bottom: 0;
+        bottom: 3.333vw;
         left: 0;
         .red{
             color: red;
