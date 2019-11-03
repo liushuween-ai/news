@@ -89,6 +89,7 @@ export default {
         position: fixed;
         bottom: 3.333vw;
         left: 0;
+        // background: #fff;
         .red{
             color: red;
         }

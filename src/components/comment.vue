@@ -12,7 +12,7 @@
                   回复
               </div>
           </div>
-          <commentFloor v-if="commentItem.parent" :floorItem="commentItem.parent" :parentLengh="parentLengh"></commentFloor>
+          <commentFloor v-if="commentItem.parent" :floorItem="commentItem.parent" :parentLengh="parentLengh" @reply="reply"></commentFloor>
           <div class="commentContent">
             {{this.commentItem.content}}
           </div>
@@ -33,8 +33,13 @@ export default {
         }
     },
     methods:{
-        reply(){
-            this.$emit('reply',{id:this.commentItem.id})
+        reply(data){
+            if(data.id){
+                this.$emit('reply',data);
+                console.log('最外层评论组件接收子级组件的id='+data.id)
+            }else{
+                this.$emit('reply',{id:this.commentItem.id})
+            }
         },
         countParent(number,obj){
             // 获取parent的个数传给commentFloor组件
