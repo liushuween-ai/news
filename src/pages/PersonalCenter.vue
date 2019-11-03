@@ -105,7 +105,7 @@ export default {
               margin-left: 20.002px;
 
               .time{
-                  font-size: 3.889vw;
+                  font-size: 14px;
                   color: #777;
               }
           } 

@@ -69,11 +69,11 @@ export default {
       .left{
         flex:2;
         .title{
-          font-size: 5vw;
+          font-size: 18px;
           margin-bottom: 5.556vw;
         }
         .info{
-          font-size: 3.889vw;
+          font-size: 14px;
           color: #777;
         }
       }
@@ -90,7 +90,7 @@ export default {
        padding: 4.167vw 2.778vw;
         border-bottom: 1px solid #ccc;
         .title{
-          font-size: 5vw;
+          font-size: 18px;
         }
         .imgWrapper{
           display: flex;
@@ -105,7 +105,7 @@ export default {
           }
         }
         .info{
-          font-size: 3.889vw;
+          font-size: 14px;
           color: #777;
         }
     }

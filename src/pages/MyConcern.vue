@@ -75,9 +75,9 @@ export default {
     .content{
       flex:1;
       margin-left: 4.167vw;
-      font-size: 4.444vw;
+      font-size: 16px;
       .time{
-        font-size: 3.889vw;
+        font-size: 14px;
         color: #aaa;
       }
     }
@@ -87,7 +87,7 @@ export default {
       line-height: 8.333vw;
       border-radius: 4.167vw;
       background: #eee;
-      font-size: 3.889vw;
+      font-size: 14px;
       color: #000;
     }
   }

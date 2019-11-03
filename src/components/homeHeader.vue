@@ -20,31 +20,31 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 54px;
+        height: 15vw;
         width: 100%;
         background-color: red;
         color: #fff;
         .iconnew{
-            width: 54px;
-            height: 54px;
-            font-size: 54px;
+            width: 15vw;
+            height: 15vw;
+            font-size: 15vw;
             color: #fff;
-            margin: 0 15px;
+            margin: 0 4.167vw;
         }
         .search{
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            // width: 210px;
-            height: 34px;
+            // width: 58.333vw;
+            height: 9.444vw;
             background-color: rgba(255, 255, 255, 0.4);
-            border-radius: 17px;
+            border-radius: 4.722vw;
         }
         .iconwode{
             font-size: 24px;
             color: #fff;
-            margin: 0 20px;
+            margin: 0 5.556vw;
 
         }
     }

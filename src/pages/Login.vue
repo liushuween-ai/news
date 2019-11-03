@@ -84,7 +84,7 @@ export default {
             .iconicon-test{
                 width: 7.5vw;
                 height: 7.5vw;
-                font-size: 24.001px;
+                font-size: 24px;
                 color: #333333;
             }
         }

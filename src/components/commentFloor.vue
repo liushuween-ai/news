@@ -25,13 +25,13 @@ export default {
     props:['floorItem','parentLengh','commentId'],
     methods:{
         reply(data){
-            console.log(data)
+            // console.log(data)
             if(data.id){
                 this.$emit('reply',{id:data.id});
-                console.log('有子集组件的评论'+data.id)
+                // console.log('有子集组件的评论'+data.id)
             }else{
                 this.$emit('reply',{id:this.floorItem.id});
-                console.log('点击了最底层的评论'+this.floorItem.id)
+                // console.log('点击了最底层的评论'+this.floorItem.id)
             }
         }
     }

@@ -20,22 +20,22 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 0;
+        padding: 4.167vw 0;
         font-size: 16px;
         color: #333;
         .search{
-            width: 258px;
-            height: 38px;
+            width: 71.667vw;
+            height: 10.556vw;
             display: flex;
             align-items: center;
-            border-radius: 16px;
-            padding-left: 15px;
+            border-radius: 4.444vw;
+            padding-left: 4.167vw;
             overflow: hidden;
             border: 1px solid #ccc;
             box-sizing: border-box;
             .iconfont{
                 font-size: 15px;
-                margin-right: 10px;
+                margin-right: 2.778vw;
             }
             input{
                 border: none;

@@ -37,7 +37,7 @@ export default {
                url:'/user_unfollow/'+this.post.user.id,
                method:'get'
            }).then(res=>{
-               console.log(res)
+            //    console.log(res)
                const {message}=res.data;
                 if(message==='取消关注成功'){
                    this.post.has_follow=false;
@@ -65,7 +65,7 @@ export default {
             line-height: 7.222vw;
             text-align: center;
             border-radius: 4.444vw;
-            font-size: 3.333vw;
+            font-size: 12px;
             color: #fff;
             background-color: red;
             border: 1px solid #f00;

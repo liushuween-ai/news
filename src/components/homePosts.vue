@@ -79,14 +79,14 @@ export default {
     .rigth{
      
       img{
-        width: 121px;
-        height: 75px;
+        width: 33.611vw;
+        height: 20.833vw;
         object-fit: cover;
       }
     }
   }
   .multipImgPost{
-    padding: 15px 10px;
+    padding: 4.167vw 2.778vw;
     border-bottom: 1px solid #eee;
     .title{
       font-size: 16px;
@@ -98,11 +98,11 @@ export default {
     .conter{
       display: flex;
       justify-content: space-between;
-      margin-top: 5px;
-      margin-bottom: 10px;
+      margin-top: 1.389vw;
+      margin-bottom: 2.778vw;
       img{
         width: 33%;
-        height: 74px;
+        height: 20.556vw;
         object-fit: cover;
       }
     }

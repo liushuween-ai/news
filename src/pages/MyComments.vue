@@ -66,7 +66,7 @@ export default {
 
 <style lang="less" scoped>
     .comment{
-        font-size: 3.889vw;
+        font-size: 14px;
         color: #777;
         .content{
             padding: 5.556vw;
@@ -90,21 +90,21 @@ export default {
                     text-overflow: ellipsis;
                 }
                 .iconfont{
-                    padding-left: 25px;
+                    padding-left: 6.944vw;
                 }
             }
             .reply{
-                font-size: 5.556vw;
+                font-size: 20px;
                 color: #000;
                 margin-bottom: 2.778vw;
             }
         }
         .getcomments{
-            margin: 20px 0;
+            margin: 5.556vw 0;
             display: flex;
             justify-content: center;
             .iconfont:nth-child(2){
-                margin-left: -12px;
+                margin-left: -3.333vw;
                
             }
         }

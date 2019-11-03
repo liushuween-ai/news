@@ -151,8 +151,8 @@ export default {
             border-bottom: 1px solid #ccc;
             padding-bottom: 5.556vw;
             .content{
-                height: 26px;
-                line-height: 26px;
+                height: 7.222vw;
+                line-height: 7.222vw;
             }
         }
         .hot{
@@ -164,11 +164,11 @@ export default {
                     float: left;
                     display: block;
                     width: 45%;
-                    height: 26px;
-                    line-height: 26px;
+                    height: 7.222vw;
+                    line-height: 7.222vw;
                     border-bottom: 1px solid #ccc;
-                    padding-left: 10px;
-                    margin-right: 10px;
+                    padding-left: 2.778vw;
+                    margin-right: 2.778vw;
                     box-sizing: border-box;
                 }
             }

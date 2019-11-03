@@ -106,7 +106,7 @@ export default {
                 color: #333;
                 border-radius: 4.444vw;
                 padding-left: 2.222vw;
-                font-size: 3.889vw;
+                font-size: 14px;
             }
             .iconfont{
                 font-size: 6.389vw;
@@ -151,7 +151,7 @@ export default {
                color: #fff;
                line-height: 7.222vw;
                text-align: center;
-               font-size: 3.333vw;
+               font-size: 12px;
            }
         }
     }

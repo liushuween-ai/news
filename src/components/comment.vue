@@ -36,7 +36,7 @@ export default {
         reply(data){
             if(data.id){
                 this.$emit('reply',data);
-                console.log('最外层评论组件接收子级组件的id='+data.id)
+                // console.log('最外层评论组件接收子级组件的id='+data.id)
             }else{
                 this.$emit('reply',{id:this.commentItem.id})
             }

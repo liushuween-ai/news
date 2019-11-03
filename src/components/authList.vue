@@ -28,7 +28,7 @@ export default {
         border-bottom: 1px solid #eee;
         .particulars{
             color: #999;
-            font-size: 3.889vw;
+            font-size: 14px;
         }
     }
 </style>

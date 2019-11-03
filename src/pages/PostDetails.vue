@@ -111,7 +111,7 @@ export default {
                     pageSize:3
                 }
             }).then(res=>{
-                console.log(res.data.data);
+                // console.log(res.data.data);
                 this.comments=res.data.data;  
             })
         }
@@ -128,16 +128,16 @@ export default {
             width: 100%;
         }
         .title{
-            font-size: 5.556vw;
+            font-size: 20px;
             font-weight: 600;
         }
         .info{
-            font-size: 3.889vw;
+            font-size: 14px;
             color: #777; 
               
         }
         .content{
-            font-size: 3.889vw;
+            font-size: 14px;
             line-height: 7.778vw;
             color: #333;
             margin: 6.944vw 0;
@@ -156,7 +156,7 @@ export default {
                 text-align: center;
                 border: 1px solid #ccc;
                 border-radius: 4.167vw;
-                font-size: 3.889vw;
+                font-size: 14px;
                 color: #333;
                 &.like{
                     color: red;
@@ -193,13 +193,13 @@ export default {
             font-size: 16px;
         }
         .btnMoreComments{
-            width: 120px;
-            height: 30px;
-            border-radius: 15px;
-            line-height: 30px;
+            width: 33.333vw;
+            height: 8.333vw;
+            border-radius: 4.167vw;
+            line-height: 8.333vw;
             text-align: center;
             border: 1px solid #333;
-            margin: 15px auto 0;
+            margin: 4.167vw auto 0;
         }
     }
 </style>
