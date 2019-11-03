@@ -73,24 +73,26 @@ export default {
             this.search();
         },
         search(){
+            if(this.searchText !=''){
+                this.$axios({
+                     url: '/post_search',
+                    method: 'get',
+                    params: {
+                        keyword: this.searchText
+                    }
+                }).then(res=>{
+                    // console.log(res);
+                    const {data} = res.data;
+                    // 获取到了数据,先存在 data 当中,遍历之后渲染
+                    this.resultList = data;
+                    // 判断historyList数组中有没有这个元素没有就添加进去
+                    if(this.historyList.indexOf(this.searchText)<0){
+                        this.historyList.push(this.searchText);
+                    }
+                    
+                })
+            }
             // 获取搜索文章数据
-            this.$axios({
-                 url: '/post_search',
-                method: 'get',
-                params: {
-                    keyword: this.searchText
-                }
-            }).then(res=>{
-                // console.log(res);
-                const {data} = res.data;
-                // 获取到了数据,先存在 data 当中,遍历之后渲染
-                this.resultList = data;
-                // 判断historyList数组中有没有这个元素没有就添加进去
-                if(this.historyList.indexOf(this.searchText)<0){
-                    this.historyList.push(this.searchText);
-                }
-                
-            })
         },
         getHotList() {
             // 应该发送 ajx 请求
