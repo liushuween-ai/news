@@ -14,13 +14,12 @@
      <div v-else>
          <div class="history">
              <p class="title">历史记录</p>
-             <p class="content">美女</p>
+             <p class="content" v-for="(item, index) in historyList" :key="index">{{item}}</p>
          </div>
          <div class="hot">
              <p class="title">热门搜索</p>
              <div class="content">
-                 <span>办公室小野否认解散</span>
-                 <span>月季如何嫁接</span>
+                 <span v-for="(item,index) in hotList" :key="index" @click="searchByWord(item)">{{item}}</span>
              </div>
          </div>
      </div>
@@ -39,14 +38,42 @@ export default {
         return {
             searchText:'',
             resultList:[],
+            hotList:[],
+            historyList:localStorage.getItem('historyList')?JSON.parse(localStorage.getItem('historyList')):[],
         }
+    },
+    watch:{
+        searchText(){
+            // 监听当输入框内容为空的时候显示的文章数组变为空
+            if(this.searchText==''){
+                this.resultList=[];
+            }
+        },
+        historyList(){
+            localStorage.setItem('historyList',JSON.stringify(this.historyList))
+        },
+    },
+    mounted(){
+        // 页面挂载完毕后就要获取热门数据列表的数据
+        this.getHotList();
     },
     methods:{
         back(){
-            this.$router.back()
+            // 当输入框中有内容点击返回箭头清空输入框的内容
+            if(this.searchText){
+                this.searchText=''
+            }else{
+                // 输入框没有内容返回我上一个页面
+                this.$router.back();
+            }
+        },
+        searchByWord(item){
+            // 点击热门搜索的内容就，搜索框就搜索该内容
+            this.searchText=item;
+            this.search();
         },
         search(){
-            // 获取搜索数据
+            // 获取搜索文章数据
             this.$axios({
                  url: '/post_search',
                 method: 'get',
@@ -54,41 +81,54 @@ export default {
                     keyword: this.searchText
                 }
             }).then(res=>{
-                console.log(res);
+                // console.log(res);
                 const {data} = res.data;
                 // 获取到了数据,先存在 data 当中,遍历之后渲染
                 this.resultList = data;
+                // 判断historyList数组中有没有这个元素没有就添加进去
+                if(this.historyList.indexOf(this.searchText)<0){
+                    this.historyList.push(this.searchText);
+                }
                 
             })
-        }
+        },
+        getHotList() {
+            // 应该发送 ajx 请求
+            // 获取到热门搜索数组
+            this.hotList = [
+                '关晓彤',
+                '王祖贤',
+                '女歌手'
+            ]
+        },
     }
 }
 </script>
 
 <style lang="less" scoped>
     .search{
-        margin: 0 15px;
+        margin: 0 3vw;
         color: #333;
         .searchHeader{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 4.167vw 0;
             font-size: 16px;
             color: #333;
             .search{
-                width: 258px;
-                height: 38px;
+                width: 71.667vw;
+                height: 10.556vw;
                 display: flex;
                 align-items: center;
-                border-radius: 16px;
-                padding-left: 15px;
+                border-radius: 4.444vw;
+                padding-left: 4.167vw;
                 overflow: hidden;
                 border: 1px solid #ccc;
                 box-sizing: border-box;
                 .iconfont{
                     font-size: 15px;
-                    margin-right: 10px;
+                    margin-right: 2.778vw;
                 }
                 input{
                     border: none;
@@ -102,20 +142,34 @@ export default {
         .title{
             font-size: 16px;
             font-weight: 600;
-            margin: 20px 0;
+            margin: 5.556vw 0;
         }
         .content{
             font-size: 14px;
         }
         .history{
             border-bottom: 1px solid #ccc;
-            padding-bottom: 20px;
+            padding-bottom: 5.556vw;
+            .content{
+                height: 26px;
+                line-height: 26px;
+            }
         }
         .hot{
             .content{
-                display: flex;
+                width:100%;
+                box-sizing: border-box;
+                // display: flex;
                 span{
-                    flex: 1
+                    float: left;
+                    display: block;
+                    width: 45%;
+                    height: 26px;
+                    line-height: 26px;
+                    border-bottom: 1px solid #ccc;
+                    padding-left: 10px;
+                    margin-right: 10px;
+                    box-sizing: border-box;
                 }
             }
         }
