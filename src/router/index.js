@@ -11,6 +11,7 @@ import MyCollections from '@/pages/MyCollections'
 import PostDetails from '@/pages/PostDetails'
 import Search from '@/pages/Search'
 import MoreComments from '@/pages/MoreComments'
+import TabManager from '@/pages/TabManager'
 Vue.use(Router)
 
 export default new Router({
@@ -67,6 +68,11 @@ export default new Router({
       path: '/moreComments/:id',
       name: 'moreCommentsPage',
       component: MoreComments
+    },
+    {
+      path: '/tabManager',
+      name: 'tabManagerPage',
+      component: TabManager
     }
   ]
 })
