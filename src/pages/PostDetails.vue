@@ -91,7 +91,7 @@ export default {
                 url:'/post_like/'+this.posts.id,
                 method:'get'
             }).then(res=>{
-                console.log(res);
+                // console.log(res);
                 const {message}=res.data
                 if(message==='取消成功'){
                     this.posts.has_like=false;
