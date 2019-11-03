@@ -20,6 +20,7 @@
       <authList title="我的关注" particulars="关注的用户" @redirect="$router.push('/myConcern')"></authList>
       <authList title="我的跟帖" particulars="跟帖/回复" @redirect="$router.push('/myComments')"></authList>
       <authList title="我的收藏" particulars="文章/视频" @redirect="$router.push('/myCollections')"></authList>
+      <authList title="栏目管理" particulars="栏目" @redirect="$router.push('/tabManager')"></authList>
       <authList title="设置"  @redirect="editDataPage"></authList>
       <authList title="退出登录"  @redirect="loginPage"></authList>
   </div>
