@@ -63,7 +63,7 @@ export default {
         // console.log(localStorage.getItem('token'));
         // 向后台发送请求
         this.$axios({
-            url:'http://127.0.0.1:3000/user/'+localStorage.getItem('user_id'),
+            url:'/user/'+localStorage.getItem('user_id'),
             method:'get',
             headers:{
                 Authorization:localStorage.getItem('token')

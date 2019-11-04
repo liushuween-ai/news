@@ -32,8 +32,8 @@ import 'vant/lib/index.css';
 
 Vue.prototype.$axios=axios;
 // 设置axios基准路径
-axios.defaults.baseURL = "http://127.0.0.1:3000";
-// axios.defaults.baseURL = "http://111.230.181.206:3000";
+// axios.defaults.baseURL = "http://127.0.0.1:3000";
+axios.defaults.baseURL = "http://111.230.181.206:3000";
 // axios.defaults.baseURL = "http://localhost:3000";
 
 // axios拦截器 请求拦截器
