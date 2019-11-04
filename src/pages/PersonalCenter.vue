@@ -69,14 +69,16 @@ export default {
                 Authorization:localStorage.getItem('token')
             }
         }).then(res=>{
-            // console.log(res.data.data);
+            // console.log(res.data);
             this.data=res.data.data;
+
             if(this.data.head_img) {
                 this.data.head_img=this.$axios.defaults.baseURL+ this.data.head_img;
-                // console.log(this.$axios.defaults.baseURL)
+                
             }else{
                 this.data.head_img='/static/imgs/a.jpg'
             }
+            
         })
     }
 }
