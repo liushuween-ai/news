@@ -56,7 +56,7 @@ export default {
                 // console.log(res);
                
                 // 判断弹出提示框
-                if(!res.data.statusCode){
+                if(res.data.statusCode==200){
                     localStorage.setItem('token',res.data.data.token);
                     localStorage.setItem('user_id',res.data.data.user.id);
                     setTimeout(()=>{
