@@ -36,6 +36,17 @@ Vue.prototype.$axios=axios;
 axios.defaults.baseURL = "http://111.230.181.206:3000";
 // axios.defaults.baseURL = "http://localhost:3000";
 
+// 设置图片路径
+Vue.prototype.$fixImgUrl = function (url) {
+  let res = '';
+  if (url.indexOf('http') < 0) {
+    res = axios.defaults.baseURL + url;
+  } else {
+    res = url;
+  }
+  return res;
+}
+
 // axios拦截器 请求拦截器
 axios.interceptors.request.use((config)=>{
   if (!config.headers.Authorization&&localStorage.getItem('token')){
