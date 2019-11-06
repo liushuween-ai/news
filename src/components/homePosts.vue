@@ -16,7 +16,7 @@
         <div class="info">{{posts.user.nickname}}&nbsp;&nbsp;&nbsp;<span>{{posts.comment_length}}跟帖</span></div>
       </div>
       <div class="rigth" @click="toDetails">
-        <img :src="posts.cover[0].url" alt="">
+        <img :src="$fixImgUrl(posts.cover[0].url)" alt="">
       </div>
     </div>
     <div class="multipImgPost" v-else-if="posts.cover.length>=3">
