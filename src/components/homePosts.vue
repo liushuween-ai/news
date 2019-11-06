@@ -3,7 +3,7 @@
     <div class="videoPost" v-if="posts.type==2">
       <div class="title" @click="toDetails">{{posts.title}}</div>
       <div class="cover" @click="toDetails">
-        <img :src="posts.cover[0].url" alt="">
+        <img :src="$fixImgUrl(posts.cover[0].url)" alt="">
         <div class="btnWrapper">
           <div class="iconfont iconshipin"></div>
         </div>
@@ -22,9 +22,9 @@
     <div class="multipImgPost" v-else-if="posts.cover.length>=3">
       <div class="title" @click="toDetails">{{posts.title}}</div>
       <div class="conter" @click="toDetails">
-        <img :src="posts.cover[0].url" alt="">
-        <img :src="posts.cover[1].url" alt="">
-        <img :src="posts.cover[2].url" alt="">        
+        <img :src="$fixImgUrl(posts.cover[0].url)" alt="">
+        <img :src="$fixImgUrl(posts.cover[1].url)" alt="">
+        <img :src="$fixImgUrl(posts.cover[2].url)" alt="">        
       </div>
       <div class="info">
         {{posts.user.nickname}}&nbsp;&nbsp;&nbsp;<span>{{posts.comment_length}}跟帖</span>
